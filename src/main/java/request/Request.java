@@ -7,19 +7,13 @@ public abstract class Request {
     protected Map<String, String> headers;
     protected boolean isVerbose;
     protected String url;
-    protected String outputFileName;
 
     public Request() { }
 
     public Request(String url, boolean isVerbose, Map<String, String> headers) {
-        this(url, isVerbose, headers, "");
-    }
-
-    public Request(String url, boolean isVerbose, Map<String, String> headers, String outputFileName) {
         this.url = url;
         this.isVerbose = isVerbose;
         this.headers = headers;
-        this.outputFileName = outputFileName;
     }
 
     abstract void sendRequest();
@@ -46,13 +40,5 @@ public abstract class Request {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getOutputFileName() {
-        return outputFileName;
-    }
-
-    public void setOutputFileName(String outputFileName) {
-        this.outputFileName = outputFileName;
     }
 }

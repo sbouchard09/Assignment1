@@ -26,11 +26,6 @@ public class PostRequest extends Request {
         parseOptions(options);
     }
 
-    public PostRequest(String url, boolean isVerbose, Map<String, String> headers, Map<String, String> options, String outputFileName) throws IllegalArgumentException{
-        super(url, isVerbose, headers, outputFileName);
-        parseOptions(options);
-    }
-
     private void parseOptions(Map<String, String> options) throws IllegalArgumentException{
         if(options.containsKey("inline_data")) {
             hasInlineData = true;
