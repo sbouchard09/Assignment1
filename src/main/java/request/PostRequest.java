@@ -1,5 +1,7 @@
 package request;
 
+import connection.Connection;
+
 import java.util.Map;
 
 public class PostRequest extends Request {
@@ -11,19 +13,18 @@ public class PostRequest extends Request {
 
     public PostRequest(String url, boolean isVerbose) {
         super(url, isVerbose, null);
+        super.setConnection(new Connection("GET"));
     }
 
     public PostRequest(String url, boolean isVerbose, Map<String, String> headers) {
         super(url, isVerbose, headers);
-    }
-
-    public PostRequest(String url, boolean isVerbose, Map<String, String> headers, String outputFileName) {
-        super(url, isVerbose, headers, outputFileName);
+        super.setConnection(new Connection("GET"));
     }
 
     public PostRequest(String url, boolean isVerbose, Map<String, String> headers, Map<String, String> options) throws IllegalArgumentException{
         super(url, isVerbose, headers);
         parseOptions(options);
+        super.setConnection(new Connection("GET"));
     }
 
     private void parseOptions(Map<String, String> options) throws IllegalArgumentException{

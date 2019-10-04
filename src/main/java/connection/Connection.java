@@ -1,3 +1,5 @@
+package connection;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -5,7 +7,6 @@ import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.URL;
-import java.net.UnknownHostException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +25,10 @@ public class Connection {
 
     private final int PORT = 80;
 
+    public Connection(String requestMethod) {
+        this.requestMethod = requestMethod;
+    }
+
     public void openConnection(String host) throws IOException {
         this.address = InetAddress.getByName(host);
         socket = new Socket(address, PORT);
@@ -31,10 +36,6 @@ public class Connection {
         requestReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.headers = new HashMap<String, String>();
         this.url = new URL(host);
-    }
-
-    public void setRequestMethod(String requestMethod) {
-        this.requestMethod = requestMethod;
     }
 
     public void setRequestProperty(String key, String value) {
@@ -85,6 +86,8 @@ public class Connection {
 
     private String addHeaders() {
         StringBuilder headerBuilder = new StringBuilder();
+
+        headerBuilder.append("Content-Type: application/json\r\n");
 
         for(Map.Entry<String, String> header : headers.entrySet()) {
             headerBuilder.append(header.getKey() + ": " + header.getValue() + "\r\n");

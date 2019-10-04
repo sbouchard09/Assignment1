@@ -1,5 +1,7 @@
 package request;
 
+import connection.Connection;
+
 import java.util.Map;
 
 public abstract class Request {
@@ -7,6 +9,7 @@ public abstract class Request {
     protected Map<String, String> headers;
     protected boolean isVerbose;
     protected String url;
+    protected Connection connection;
 
     public Request() { }
 
@@ -17,6 +20,10 @@ public abstract class Request {
     }
 
     abstract void sendRequest();
+
+    public void setConnection(Connection c) {
+        this.connection = c;
+    }
 
     public Map<String, String> getHeaders() {
         return headers;
@@ -40,5 +47,9 @@ public abstract class Request {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public void output() {
+
     }
 }
