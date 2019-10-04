@@ -2,7 +2,7 @@ package request;
 
 import java.io.IOException;
 
-public class get {
+public class GetRequest extends Request {
 
     private void sendGetRequest() throws IOException {
     }
