@@ -6,18 +6,13 @@ public class Httpc {
 
     public static void main(String[] args) {
         Request request;
-        boolean isPost = false;
+        String requestType = ""; // GET, POST, empty (from args)
+        boolean needsHelp = false;
+        boolean isVerbose = false;
 
-        // parse
-
-        if(isPost) {
-            request = new PostRequest(/*args*/);
-        } else { // get request
-            request = new GetRequest(/*args*/);
+        if(needsHelp) {
+            Help help = new Help(requestType);
+            System.out.println(help.printHelp());
         }
-
-        // response
-        // parse response
-        // output
     }
 }
