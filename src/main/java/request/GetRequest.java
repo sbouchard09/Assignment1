@@ -21,5 +21,9 @@ public class GetRequest extends Request {
     }
 
     public void sendRequest() {
+        /*
+        connection.setHeaders(....)
+        super.viewOutput();
+         */
     }
 }

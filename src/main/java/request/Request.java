@@ -49,7 +49,9 @@ public abstract class Request {
         this.url = url;
     }
 
-    public void output() {
+    public void viewOutput() {
+
+        // TODO: Scott will do this
 
     }
 }
