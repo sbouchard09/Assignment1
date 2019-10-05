@@ -10,11 +10,6 @@ import java.util.Map;
 
 public class GetRequest extends Request {
 
-    public GetRequest(String url, boolean isVerbose) {
-        super(url, isVerbose, null);
-        super.setConnection(new Connection("GET"));
-    }
-
     public GetRequest(String url, boolean isVerbose, Map<String, String> headers) {
         super(url, isVerbose, headers);
         super.setConnection(new Connection("GET"));
