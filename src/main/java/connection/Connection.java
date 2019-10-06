@@ -30,7 +30,7 @@ public class Connection {
     }
 
     public void openConnection(String host) throws IOException {
-        this.address = InetAddress.getByName(host);
+        this.address = InetAddress.getByName(host.trim());
         socket = new Socket(address, PORT);
         requestWriter = new PrintWriter(socket.getOutputStream(), true);
         requestReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

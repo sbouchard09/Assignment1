@@ -1,3 +1,9 @@
-request\Request.class
+request\GetRequest.class
+CommandGet.class
 connection\Connection.class
 CLIParameter.class
+CommandPost.class
+request\Request.class
+Httpc.class
+request\PostRequest.class
+Help.class

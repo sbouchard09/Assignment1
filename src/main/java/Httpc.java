@@ -47,7 +47,7 @@ public class Httpc {
 					options.put("inline_data", post.getOption());
 				}
 				if(post.getInputFile() != null || post.getOption().length() != 0) {
-					options.put("input_file", readInputFile(post.getInputFile());
+					options.put("input_file", readInputFile(post.getInputFile()));
 				}
 				
 				try{

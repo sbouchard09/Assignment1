@@ -15,7 +15,8 @@ public class GetRequest extends Request {
     }
 
     public void sendRequest(){
-        try {connection.openConnection(url);
+        try {
+            connection.openConnection(url);
         } catch (IOException e) {
             e.printStackTrace();
         }
