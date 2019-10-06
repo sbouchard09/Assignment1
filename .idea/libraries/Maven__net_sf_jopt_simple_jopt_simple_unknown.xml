@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: net.sf.jopt-simple:jopt-simple:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/jopt-simple/jopt-simple/unknown/jopt-simple-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/jopt-simple/jopt-simple/unknown/jopt-simple-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/net/sf/jopt-simple/jopt-simple/unknown/jopt-simple-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
