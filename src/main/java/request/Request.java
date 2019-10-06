@@ -10,6 +10,7 @@ public abstract class Request {
     protected boolean isVerbose;
     protected String url;
     protected Connection connection;
+    protected String outputFileName = "";
 
     public Request() { }
 
@@ -51,7 +52,23 @@ public abstract class Request {
 
     public void viewOutput() {
 
-        // TODO: Scott will do this
+        String body;
+        String response = connection.getResponse();
 
+        if(isVerbose) {
+            if(outputFileName.equals("")) {
+                System.out.println(response);
+            } else {
+
+            }
+        } else {
+            // body is separated from the header by \r\n
+            body = response.split("\r\n\r\n")[1];
+            if(outputFileName.equals("")) {
+                System.out.println(body);
+            } else {
+
+            }
+        }
     }
 }

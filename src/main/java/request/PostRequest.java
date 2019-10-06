@@ -11,16 +11,6 @@ public class PostRequest extends Request {
     String inlineData;
     String inputFileName;
 
-    public PostRequest(String url, boolean isVerbose) {
-        super(url, isVerbose, null);
-        super.setConnection(new Connection("GET"));
-    }
-
-    public PostRequest(String url, boolean isVerbose, Map<String, String> headers) {
-        super(url, isVerbose, headers);
-        super.setConnection(new Connection("GET"));
-    }
-
     public PostRequest(String url, boolean isVerbose, Map<String, String> headers, Map<String, String> options) throws IllegalArgumentException{
         super(url, isVerbose, headers);
         parseOptions(options);
