@@ -27,20 +27,20 @@ public class Httpc {
         }
 
         if(cliArgs.getCLIRequest().equalsIgnoreCase("get")){
-                request = cliArgs.getHeader().isEmpty() ? new GetRequest(cliArgs.getCLIRequest(),cliArgs.getVerbose())
-                        : new GetRequest(cliArgs.getCLIRequest(),cliArgs.getVerbose(), cliArgs.getHeader());
+            request = new GetRequest(cliArgs.getCLIRequest(),cliArgs.getVerbose(), cliArgs.getHeader());
+            request.sendRequest();
         }
         else {
-                if (cliArgs.getHeader().isEmpty()){
-                    request = new PostRequest(cliArgs.getUrl(),cliArgs.getVerbose());
-                }else if (cliArgs.getOption().equals(null)){
-                    request = new PostRequest(cliArgs.getUrl(),cliArgs.getVerbose(), cliArgs.getHeader());
-                }else {
-                    // need to fix option attribute in CLIParameter class
-                    request = new PostRequest(cliArgs.getUrl(),cliArgs.getVerbose(), cliArgs.getHeader(), cliArgs.getOption());
-                }
-
+            if (cliArgs.getHeader().isEmpty()){
+                request = new PostRequest(cliArgs.getUrl(),cliArgs.getVerbose());
+            }else if (cliArgs.getOption().equals(null)){
+                request = new PostRequest(cliArgs.getUrl(),cliArgs.getVerbose(), cliArgs.getHeader());
+            }else {
+                // need to fix option attribute in CLIParameter class
+                request = new PostRequest(cliArgs.getUrl(),cliArgs.getVerbose(), cliArgs.getHeader(), cliArgs.getOption());
             }
+
+        }
 
 
         /*

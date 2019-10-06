@@ -33,7 +33,10 @@ public class PostRequest extends Request {
         }
     }
 
-    public void sendRequest() {
-        // do stuff
+    public void sendRequest(String url, Map<String, String> headers, Map<String, String> option) {
+        connection.openConnection(url);
+        for (Map.Entry<String, String> header: headers.entrySet()) {
+
+        }
     }
 }

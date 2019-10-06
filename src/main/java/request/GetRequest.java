@@ -1,5 +1,4 @@
 package request;
-
 import connection.Connection;
 
 import java.io.IOException;
@@ -15,7 +14,16 @@ public class GetRequest extends Request {
         super.setConnection(new Connection("GET"));
     }
 
-    public void sendRequest() {
+    public void sendRequest(){
+        try {connection.openConnection(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (Map.Entry<String, String> header: headers.entrySet()) {
+            connection.setRequestProperty(header.getKey(), header.getValue());
+        }
+        connection.sendRequest();
+        super.viewOutput();
         /*
         connection.setHeaders(....)
         super.viewOutput();
