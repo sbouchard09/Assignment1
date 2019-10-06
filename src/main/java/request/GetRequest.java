@@ -22,11 +22,11 @@ public class GetRequest extends Request {
         for (Map.Entry<String, String> header: headers.entrySet()) {
             connection.setRequestProperty(header.getKey(), header.getValue());
         }
-        connection.sendRequest();
+        try {
+            connection.sendRequest();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         super.viewOutput();
-        /*
-        connection.setHeaders(....)
-        super.viewOutput();
-         */
     }
 }

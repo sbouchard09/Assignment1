@@ -20,7 +20,7 @@ public abstract class Request {
         this.headers = headers;
     }
 
-    abstract void sendRequest();
+    public abstract void sendRequest();
 
     public void setConnection(Connection c) {
         this.connection = c;
