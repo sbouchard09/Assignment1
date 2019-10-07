@@ -4,6 +4,7 @@ import request.Request;
 import com.beust.jcommander.*;
 
 import java.nio.file.FileSystemNotFoundException;
+import java.util.HashMap;
 import java.util.Map;
 import java.io.*;
 
@@ -33,16 +34,18 @@ public class Httpc {
 			System.out.println(help.printHelp());
 		} else {
 			if(requestType.equals("get")) { // GET
+				headers = new HashMap<String, String>();
 				url = get.getUrl();
 				isVerbose = get.getVerbose();
 				parseParameters(get.getHeader()); // headers
 				request = new GetRequest(url, isVerbose, headers);
 				request.sendRequest();
-				request.viewOutput();
 			} else { // POST
 				url = post.getUrl();
 				isVerbose = post.getVerbose();
-				parseParameters(get.getHeader());
+				headers = new HashMap<String, String>();
+				options = new HashMap<String, String>();
+				parseParameters(post.getHeader());
 				if(post.getOption() != null) {
 					options.put("inline_data", post.getOption());
 				}
@@ -53,7 +56,6 @@ public class Httpc {
 				try{
 					request = new PostRequest(url, isVerbose, headers, options);
 					request.sendRequest();
-					request.viewOutput();
 				} catch(IllegalArgumentException e) {
 					System.out.println(e.getMessage());
 				}
