@@ -3,12 +3,14 @@ package request;
 import connection.Connection;
 
 import java.util.Map;
+import java.io.IOException;
+
 
 public class PostRequest extends Request {
 
     boolean hasInputFile = false;
     boolean hasInlineData = false;
-    String inlineData;
+    String option;
     String inputFileName;
 
     public PostRequest(String url, boolean isVerbose, Map<String, String> headers, Map<String, String> options) throws IllegalArgumentException{
@@ -20,12 +22,12 @@ public class PostRequest extends Request {
     private void parseOptions(Map<String, String> options) throws IllegalArgumentException{
         if(options.containsKey("inline_data")) {
             hasInlineData = true;
-            inlineData = options.get("inline_data");
+            option = options.get("inline_data");
         }
 
         if(options.containsKey("input_file")) {
             hasInputFile = true;
-            inlineData = options.get("input_file");
+            option = options.get("input_file");
         }
 
         if(hasInlineData && hasInputFile) {
@@ -33,7 +35,23 @@ public class PostRequest extends Request {
         }
     }
 
-    public void sendRequest() {
-        // do stuff
+    public void sendRequest(){
+        try {connection.openConnection(url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if(headers != null) {
+            for (Map.Entry<String, String> header: headers.entrySet()) {
+                connection.setRequestProperty(header.getKey(), header.getValue());
+            }
+        }
+        connection.setBody(option);
+        try {
+            connection.sendRequest();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        super.viewOutput();
     }
 }

@@ -20,7 +20,7 @@ public abstract class Request {
         this.headers = headers;
     }
 
-    abstract void sendRequest();
+    public abstract void sendRequest();
 
     public void setConnection(Connection c) {
         this.connection = c;
@@ -63,7 +63,12 @@ public abstract class Request {
             }
         } else {
             // body is separated from the header by \r\n
-            body = response.split("\r\n\r\n")[1];
+            try{
+                body = response.split("\r\n\r\n")[1];
+            } catch (ArrayIndexOutOfBoundsException e) {
+                body = response;
+            }
+
             if(outputFileName.equals("")) {
                 System.out.println(body);
             } else {
