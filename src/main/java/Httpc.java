@@ -43,10 +43,10 @@ public class Httpc {
 				url = post.getUrl();
 				isVerbose = post.getVerbose();
 				parseParameters(get.getHeader());
-				if(post.getOption() != null || post.getOption().length() != 0) {
+				if(post.getOption() != null) {
 					options.put("inline_data", post.getOption());
 				}
-				if(post.getInputFile() != null || post.getOption().length() != 0) {
+				if(post.getInputFile() != null) {
 					options.put("input_file", readInputFile(post.getInputFile()));
 				}
 				

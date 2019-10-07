@@ -30,12 +30,12 @@ public class Connection {
     }
 
     public void openConnection(String host) throws IOException {
-        this.address = InetAddress.getByName(host.trim());
+        this.address = InetAddress.getByName(host.replaceAll("http://", "").trim());
         socket = new Socket(address, PORT);
         requestWriter = new PrintWriter(socket.getOutputStream(), true);
         requestReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.headers = new HashMap<String, String>();
-        this.url = new URL("http://" + host);
+        this.url = new URL(host);
     }
 
     public void setRequestProperty(String key, String value) {
@@ -48,6 +48,11 @@ public class Connection {
 
     // format: '{"key": value, "key": value, ...}' to key=value&key=value&..
     private void format(String body) {
+        if(body == null) {
+            this.body = "";
+            return;
+        }
+
         String[] arguments = body.split(":");
         StringBuilder bodyBuilder = new StringBuilder();
         for(int i = 0; i < arguments.length; i+=2) {

@@ -20,6 +20,8 @@ public class PostRequest extends Request {
     }
 
     private void parseOptions(Map<String, String> options) throws IllegalArgumentException{
+        if(options == null) return;
+
         if(options.containsKey("inline_data")) {
             hasInlineData = true;
             option = options.get("inline_data");
