@@ -20,9 +20,12 @@ public class GetRequest extends Request {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (Map.Entry<String, String> header: headers.entrySet()) {
-            connection.setRequestProperty(header.getKey(), header.getValue());
+        if(headers != null) {
+            for (Map.Entry<String, String> header: headers.entrySet()) {
+                connection.setRequestProperty(header.getKey(), header.getValue());
+            }
         }
+
         try {
             connection.sendRequest();
         } catch (IOException e) {

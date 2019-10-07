@@ -35,7 +35,7 @@ public class Connection {
         requestWriter = new PrintWriter(socket.getOutputStream(), true);
         requestReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.headers = new HashMap<String, String>();
-        this.url = new URL(host);
+        this.url = new URL("http://" + host);
     }
 
     public void setRequestProperty(String key, String value) {
@@ -62,6 +62,7 @@ public class Connection {
     public void sendRequest() throws IOException {
         prepareRequest();
         requestWriter.println(request);
+        requestWriter.flush();
         readResponse();
     }
 
@@ -103,10 +104,9 @@ public class Connection {
 
         while(isReading) {
             if(requestReader.ready()) {
-                int i = 0;
-                while(i != -1) {
-                    i = requestReader.read();
-                    sb.append((char) i);
+                String message = "";
+                while((message = requestReader.readLine()) != null) {
+                    sb.append(message + "\r\n");
                 }
                 isReading = false;
             }

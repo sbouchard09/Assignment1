@@ -40,8 +40,10 @@ public class PostRequest extends Request {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (Map.Entry<String, String> header: headers.entrySet()) {
-            connection.setRequestProperty(header.getKey(), header.getValue());
+        if(headers != null) {
+            for (Map.Entry<String, String> header: headers.entrySet()) {
+                connection.setRequestProperty(header.getKey(), header.getValue());
+            }
         }
         connection.setBody(option);
         try {
