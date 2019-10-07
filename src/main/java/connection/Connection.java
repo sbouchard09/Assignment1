@@ -30,12 +30,12 @@ public class Connection {
     }
 
     public void openConnection(String host) throws IOException {
-        this.address = InetAddress.getByName(host.replaceAll("http://", "").trim());
+        url = new URL(host);
+        this.address = InetAddress.getByName(url.getHost().trim());
         socket = new Socket(address, PORT);
         requestWriter = new PrintWriter(socket.getOutputStream(), true);
         requestReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.headers = new HashMap<String, String>();
-        this.url = new URL(host);
     }
 
     public void setRequestProperty(String key, String value) {
