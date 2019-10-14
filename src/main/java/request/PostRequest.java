@@ -16,7 +16,7 @@ public class PostRequest extends Request {
     public PostRequest(String url, boolean isVerbose, Map<String, String> headers, Map<String, String> options) throws IllegalArgumentException{
         super(url, isVerbose, headers);
         parseOptions(options);
-        super.setConnection(new Connection("GET"));
+        super.setConnection(new Connection("POST"));
     }
 
     private void parseOptions(Map<String, String> options) throws IllegalArgumentException{

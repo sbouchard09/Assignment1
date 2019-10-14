@@ -56,7 +56,8 @@ public class Connection {
         String[] arguments = body.split(":");
         StringBuilder bodyBuilder = new StringBuilder();
         for(int i = 0; i < arguments.length; i+=2) {
-            bodyBuilder.append(arguments[i].replaceAll("[^a-zA-Z0-9]", "") + "=" + arguments[i + 1]);
+            bodyBuilder.append(arguments[i].replaceAll("[^a-zA-Z0-9]", "") + "=" +
+                               arguments[i + 1].replaceAll("[^a-zA-Z0-9]", ""));
             if(i + 2 < arguments.length) {
                 bodyBuilder.append("&");
             }

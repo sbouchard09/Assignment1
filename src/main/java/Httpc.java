@@ -40,7 +40,7 @@ public class Httpc {
 				parseParameters(get.getHeader()); // headers
 				request = new GetRequest(url, isVerbose, headers);
 				request.sendRequest();
-			} else { // POST
+			} else if(requestType.equals("post")) { // POST
 				url = post.getUrl();
 				isVerbose = post.getVerbose();
 				headers = new HashMap<String, String>();
@@ -78,11 +78,13 @@ public class Httpc {
 
 			while(line != null) {
 				inputBuilder.append(line);
-				reader.readLine();
+				line = reader.readLine();
 			}
-			output =  inputBuilder.toString();
+			output = inputBuilder.toString();
 			reader.close();
-		} catch(Exception e) { }
+		} catch(Exception e) {
+			System.out.println("Could not read file");
+		}
 		finally {
 
 		}
