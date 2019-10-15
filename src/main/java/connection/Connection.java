@@ -23,7 +23,7 @@ public class Connection {
     private Map<String, String> headers;
     private URL url; // used to parse the URL
 
-    private final int PORT = 80;
+    private int port = 80;
 
     public Connection(String requestMethod) {
         this.requestMethod = requestMethod;
@@ -32,7 +32,10 @@ public class Connection {
     public void openConnection(String host) throws IOException {
         url = new URL(host);
         this.address = InetAddress.getByName(url.getHost().trim());
-        socket = new Socket(address, PORT);
+        if(url.getPort() != -1) {
+            this.port = url.getPort();
+        }
+        socket = new Socket(address, port);
         requestWriter = new PrintWriter(socket.getOutputStream(), true);
         requestReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         this.headers = new HashMap<String, String>();
