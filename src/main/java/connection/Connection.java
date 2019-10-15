@@ -78,6 +78,9 @@ public class Connection {
     private void prepareRequest() {
         String host = url.getHost();
         String path = url.getPath();
+        if(path == null || path.length() == 0) {
+            path = "/";
+        }
         StringBuilder requestBuilder = new StringBuilder();
         requestBuilder.append(requestMethod.toUpperCase() + " " + path + " HTTP/1.0\r\n");
         requestBuilder.append("Host: " + host + "\r\n");
