@@ -56,16 +56,20 @@ public class Connection {
             return;
         }
 
-        String[] arguments = body.split(":");
-        StringBuilder bodyBuilder = new StringBuilder();
-        for(int i = 0; i < arguments.length; i+=2) {
-            bodyBuilder.append(arguments[i].replaceAll("[^a-zA-Z0-9]", "") + "=" +
-                               arguments[i + 1].replaceAll("[^a-zA-Z0-9]", ""));
-            if(i + 2 < arguments.length) {
-                bodyBuilder.append("&");
+        try {
+            String[] arguments = body.split(":");
+            StringBuilder bodyBuilder = new StringBuilder();
+            for(int i = 0; i < arguments.length; i+=2) {
+                bodyBuilder.append(arguments[i].replaceAll("[^a-zA-Z0-9]", "") + "=" +
+                        arguments[i + 1].replaceAll("[^a-zA-Z0-9]", ""));
+                if(i + 2 < arguments.length) {
+                    bodyBuilder.append("&");
+                }
             }
+            this.body = bodyBuilder.toString();
+        } catch(Exception e) { // wrong body format
+            this.body = body;
         }
-        this.body = bodyBuilder.toString();
     }
 
     public void sendRequest() throws IOException {
@@ -85,7 +89,7 @@ public class Connection {
         requestBuilder.append(requestMethod.toUpperCase() + " " + path + " HTTP/1.0\r\n");
         requestBuilder.append("Host: " + host + "\r\n");
         if(requestMethod.equalsIgnoreCase("POST")) {
-            if(!headers.containsKey("Content-Length")) {
+            if(!headers.containsKey("Content-Length") && body.length() > 1) {
                 headers.put("Content-Length", "" + body.length());
             }
         }
@@ -93,14 +97,12 @@ public class Connection {
         if(requestMethod.equalsIgnoreCase("POST")) {
             requestBuilder.append(body);
         }
-
+        System.out.println(requestBuilder.toString());
         request = requestBuilder.toString();
     }
 
     private String addHeaders() {
         StringBuilder headerBuilder = new StringBuilder();
-
-        headerBuilder.append("Content-Type: application/json\r\n");
 
         for(Map.Entry<String, String> header : headers.entrySet()) {
             headerBuilder.append(header.getKey() + ": " + header.getValue() + "\r\n");
