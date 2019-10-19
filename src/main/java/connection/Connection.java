@@ -66,9 +66,9 @@ public class Connection {
                     bodyBuilder.append("&");
                 }
             }
-            this.body = bodyBuilder.toString();
+            this.body = bodyBuilder.toString().trim();
         } catch(Exception e) { // wrong body format
-            this.body = body;
+            this.body = body.trim();
         }
     }
 
@@ -76,6 +76,7 @@ public class Connection {
         prepareRequest();
         requestWriter.println(request);
         requestWriter.flush();
+        socket.shutdownOutput();
         readResponse();
     }
 
@@ -98,7 +99,7 @@ public class Connection {
             requestBuilder.append(body);
         }
 
-        request = requestBuilder.toString();
+        request = requestBuilder.toString().trim();
     }
 
     private String addHeaders() {
