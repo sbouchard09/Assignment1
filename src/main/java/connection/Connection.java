@@ -97,7 +97,7 @@ public class Connection {
         if(requestMethod.equalsIgnoreCase("POST")) {
             requestBuilder.append(body);
         }
-        System.out.println(requestBuilder.toString());
+
         request = requestBuilder.toString();
     }
 

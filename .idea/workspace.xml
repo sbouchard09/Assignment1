@@ -2,19 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="86a3a1ff-ebca-4b12-828d-81b4563bb979" name="Default Changelist" comment="Implement sendRequest() method in GetRequest and PostRequest">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/connection/Connection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/connection/Connection.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Help.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Help.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Httpc.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Httpc.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/connection/Connection.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/connection/Connection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/request/GetRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/request/GetRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/request/PostRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/request/PostRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/request/Request.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/request/Request.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/httpc.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/httpc.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
